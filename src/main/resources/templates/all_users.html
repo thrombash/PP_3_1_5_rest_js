@@ -22,7 +22,7 @@
     </thead>
     <tbody>
     <tr th:each="user : ${allUsers}">
-        <td th:text="${user.getName()}"/>
+        <td th:text="${user.getUsername()}"/>
         <td>
             <a class="btn" th:href="@{/admin/updateInfo(id=${user.getId()})}">
                 Update

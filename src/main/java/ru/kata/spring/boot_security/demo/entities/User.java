@@ -19,7 +19,7 @@ public class User implements UserDetails {
     @Column(name = "user_id")
     private Long id;
 
-    private String name;
+    private String username;
 
     private String password;
 
@@ -34,7 +34,7 @@ public class User implements UserDetails {
     }
 
     public User(String name, String password) {
-        this.name = name;
+        this.username = name;
         this.password = password;
     }
 
@@ -46,12 +46,8 @@ public class User implements UserDetails {
         this.roles = roles;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String name) {
+        this.username = name;
     }
 
     @Override
@@ -78,7 +74,7 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return getName();
+        return getUsername();
     }
 
     @Override
@@ -106,19 +102,19 @@ public class User implements UserDetails {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(id, user.id) && Objects.equals(name, user.name) && Objects.equals(password, user.password) && Objects.equals(roles, user.roles);
+        return Objects.equals(id, user.id) && Objects.equals(username, user.username) && Objects.equals(password, user.password) && Objects.equals(roles, user.roles);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, password, roles);
+        return Objects.hash(id, username, password, roles);
     }
 
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", name='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", roles=" + roles +
                 '}';
