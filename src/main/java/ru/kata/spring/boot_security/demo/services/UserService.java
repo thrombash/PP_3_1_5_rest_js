@@ -57,12 +57,12 @@ public class UserService implements UserDetailsService {
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(name);
+        User user = findByUsername(name);
+        if (user == null) {
+            throw new UsernameNotFoundException(String.format("User '%s' not found", name));
+        }
 
-        if (user == null)
-            throw new UsernameNotFoundException("Bad credentials");
-
-        return new User(user.getUsername(), user.getPassword());
+        return user;
     }
 
 }

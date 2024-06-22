@@ -3,6 +3,7 @@ package ru.kata.spring.boot_security.demo.utils;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
+import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 import ru.kata.spring.boot_security.demo.entities.User;
 import ru.kata.spring.boot_security.demo.services.UserService;
@@ -23,15 +24,18 @@ public class UserValidator implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         User user = (User) target;
-        try {
-            if (user.getId() == 0) {
-                userService.loadUserByUsername(user.getUsername());
-            } else return;
-        } catch (UsernameNotFoundException e) {
-            return;
-        }
-        errors.rejectValue("username", "", String.format("Username '%s' already exists",
-                user.getUsername()));
 
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "NotEmpty");
+        if (user.getUsername().length() < 6 || user.getUsername().length() > 32) {
+            errors.rejectValue("username", "Size.userForm.username");
+        }
+        if (userService.findByUsername(user.getUsername()) != null) {
+            errors.rejectValue("username", "Duplicate.userForm.username");
+        }
+
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "NotEmpty");
+        if (user.getPassword().length() < 8 || user.getPassword().length() > 32) {
+            errors.rejectValue("password", "Size.userForm.password");
+        }
     }
 }

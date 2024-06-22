@@ -27,7 +27,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         this.userService = userService;
     }
 
-
     public WebSecurityConfig(SuccessUserHandler successUserHandler) {
         this.successUserHandler = successUserHandler;
     }
@@ -40,20 +39,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .authenticationProvider(daoAuthenticationProvider())
                 .authorizeRequests()
-                .antMatchers("/", "/index").permitAll()
-                .antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("/user").hasAnyRole("USER", "ADMIN")
-                .anyRequest().authenticated()
+                    .antMatchers("/", "/index").permitAll()
+                    .antMatchers("/registration").permitAll()
+                    .antMatchers("/admin/**").hasRole("ADMIN")
+                    .antMatchers("/user").hasAnyRole("USER", "ADMIN")
+                    .anyRequest().authenticated()
                 .and()
                 .formLogin().successHandler(successUserHandler)
-                .permitAll()
+                    .permitAll()
                 .and()
                 .logout()
-                .logoutUrl("/logout")
-                .logoutSuccessUrl("/login")
-                .permitAll();
+                    .logoutUrl("/logout")
+                    .logoutSuccessUrl("/login")
+                    .permitAll();
     }
 
     @Bean
