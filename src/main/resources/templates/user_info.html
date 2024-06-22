@@ -2,41 +2,41 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>All users</title>
+    <title>User</title>
 </head>
 <body>
 
-<h2>Users</h2>
+<h2>User</h2>
 <br>
 <form th:action="@{/logout}" th:method="POST">
     <input type="submit" th:value="Logout"/>
 </form>
 <br>
-<table class="table-tabs">
-    <thead>
-    <tr>
-        <th scope="col">Name</th>
-        <th scope="col">Update</th>
-        <th scope="col">Delete</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="user : ${allUsers}">
-        <td th:text="${user.getName()}"/>
-        <td>
-            <a class="btn" th:href="@{/admin/updateInfo(id=${user.getId()})}">
-                Update
-            </a>
-        </td>
-        <td>
-            <a class="btn" th:href="@{/admin/deleteUser(id=${user.getId()})}">
-                Delete
-            </a>
-        </td>
-    </tr>
-    </tbody>
-</table>
-<br>
-<input type="button" value="Add user" onclick="window.location.href='/admin/addNewUser'"/>
+<form th:method="POST" th:action="@{/admin/saveUser}" th:object="${user}">
+    <input type="hidden" th:field="*{id}" id="id">
+    <label for="username">Enter username: </label>
+    <input type="text" th:field="*{username}" id="username"/>
+    <ul>
+        <li th:each="err : ${#fields.errors('username')}"
+            th:text="${err}" class="error" style="color: red"/>
+    </ul>
+    <br><br>
+    <label for="password">Enter password: </label>
+    <input type="text" th:field="*{password}" id="password"/>
+    <ul>
+        <li th:each="err : ${#fields.errors('password')}"
+            th:text="${err}" class="error" style="color: red"/>
+    </ul>
+    <br><br>
+    <label for="name">Enter name: </label>
+    <input type="text" th:field="*{name}" id="name"/>
+    <ul>
+        <li th:each="err : ${#fields.errors('name')}"
+            th:text="${err}" class="error" style="color: red"/>
+    </ul>
+    <br><br>
+    <input type="submit" value="OK"/>
+</form>
+
 </body>
 </html>
