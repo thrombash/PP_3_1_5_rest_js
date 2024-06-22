@@ -1,11 +1,9 @@
 package ru.kata.spring.boot_security.demo.utils;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
-import org.springframework.validation.annotation.Validated;
 import ru.kata.spring.boot_security.demo.entities.User;
 import ru.kata.spring.boot_security.demo.services.UserService;
 
@@ -28,8 +26,7 @@ public class UserValidator implements Validator {
         try {
             if (user.getId() == 0) {
                 userService.loadUserByUsername(user.getUsername());
-            }
-            else return;
+            } else return;
         } catch (UsernameNotFoundException e) {
             return;
         }
