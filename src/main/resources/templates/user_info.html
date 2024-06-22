@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>User</title>
+    <title>User info</title>
 </head>
 <body>
 
@@ -27,15 +27,6 @@
         <li th:each="err : ${#fields.errors('password')}"
             th:text="${err}" class="error" style="color: red"/>
     </ul>
-    <br><br>
-    <label for="name">Enter name: </label>
-    <input type="text" th:field="*{name}" id="name"/>
-    <ul>
-        <li th:each="err : ${#fields.errors('name')}"
-            th:text="${err}" class="error" style="color: red"/>
-    </ul>
-    <br><br>
-    <input type="submit" value="OK"/>
 </form>
 
 </body>

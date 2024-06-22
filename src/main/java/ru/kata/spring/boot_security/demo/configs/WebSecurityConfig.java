@@ -10,12 +10,14 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import ru.kata.spring.boot_security.demo.services.UserService;
 
 import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity
+@EnableWebMvc
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private final SuccessUserHandler successUserHandler;
     private UserService userService;
