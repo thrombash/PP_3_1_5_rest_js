@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="https://www.thymeleaf.org/"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Info</title>
+</head>
+<body>
+<div class="container mt-5">
+    <h2 class="text-center">User page</h2>
+    <div class="text-center">
+
+        <a class="btn btn-primary" th:href="@{/user}">User Page</a>
+        <a class="btn btn-secondary" th:href="@{/admin}">Admin Page</a>
+
+        <form th:action="@{/logout}" method="POST" class="d-inline">
+            <button type="submit" class="btn btn-danger">Logout</button>
+        </form>
+
+    </div>
+</div>
+</body>
+</html>
