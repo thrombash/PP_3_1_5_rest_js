@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>New user</title>
+</head>
+<body>
+<div class="container">
+    <h1 class="text-center">Add User</h1>
+
+    <form th:method="POST" th:action="@{/admin}" th:object="${user}" class="mt-4">
+
+        <div class="form-group">
+            <label for="name">Enter name: </label>
+            <input type="text" class="form-control" th:field="*{firstname}" id="name"/>
+        </div>
+
+        <div class="form-group">
+            <label for="lastName">Enter last name: </label>
+            <input type="text" class="form-control" th:field="*{lastname}" id="lastName"/>
+        </div>
+
+        <div class="form-group">
+            <label for="username">Enter Login: </label>
+            <input type="text" class="form-control" th:field="*{username}" id="username"/>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Enter Password: </label>
+            <input type="password" class="form-control" th:field="*{password}" id="password"/>
+        </div>
+
+        <div class="form-group">
+            <label>Roles:</label>
+            <label>
+                <select multiple="multiple" class="form-control" th:field="*{roles}">
+                    <option th:each="role: ${roles}" th:value="${role.id}" th:text="${role.toString()}"></option>
+                </select>
+            </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+</div>
+</body>
+</html>
