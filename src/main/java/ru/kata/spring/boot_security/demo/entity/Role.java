@@ -2,6 +2,7 @@ package ru.kata.spring.boot_security.demo.entity;
 
 import org.springframework.lang.NonNull;
 import org.springframework.security.core.GrantedAuthority;
+import ru.kata.spring.boot_security.demo.security.GrantedAuthorityImpl;
 
 import javax.persistence.*;
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "roles")
-public class Role implements GrantedAuthority {
+public class Role extends GrantedAuthorityImpl {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
