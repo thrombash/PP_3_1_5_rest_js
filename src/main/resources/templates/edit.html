@@ -48,7 +48,7 @@
     <form th:method="delete" th:action="@{/admin/{id}(id=${user.id})}">
         <button type="submit" class="btn btn-danger">Delete user</button>
     </form>
-    <form action="/logout" method="post" class="mt-3">
+    <form action="/logout" method="post">
         <button type="submit" class="btn btn-secondary">Logout</button>
     </form>
 </div>
