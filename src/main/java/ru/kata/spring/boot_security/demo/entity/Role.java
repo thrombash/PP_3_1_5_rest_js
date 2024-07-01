@@ -10,7 +10,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "roles")
-public class Role extends GrantedAuthorityImpl {
+public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -45,11 +45,6 @@ public class Role extends GrantedAuthorityImpl {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    @Override
-    public String getAuthority() {
-        return getName();
     }
 
     @Override

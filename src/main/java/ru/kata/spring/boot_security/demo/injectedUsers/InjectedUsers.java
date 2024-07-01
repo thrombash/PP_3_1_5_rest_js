@@ -1,5 +1,6 @@
 package ru.kata.spring.boot_security.demo.injectedUsers;
 
+import org.hibernate.Hibernate;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import ru.kata.spring.boot_security.demo.entity.Role;
@@ -31,6 +32,9 @@ public class InjectedUsers {
 
         Set<Role> adminRoles = new HashSet<>();
         Set<Role> userRoles = new HashSet<>();
+
+        Hibernate.initialize(admin);
+        Hibernate.initialize(user);
 
         userRoles.add(roleService.findRoleById(1L));
         adminRoles.add(roleService.findRoleById(1L));

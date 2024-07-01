@@ -1,5 +1,6 @@
 package ru.kata.spring.boot_security.demo.services;
 
+import org.hibernate.Hibernate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.kata.spring.boot_security.demo.entity.Role;
@@ -24,7 +25,9 @@ public class RoleServiceImpl implements RoleService {
     @Override
     @Transactional(readOnly = true)
     public Role findRoleById(Long id) {
-        return roleRepository.getById(id);
+        Role role = roleRepository.getById(id);
+        Hibernate.initialize(role);
+        return role;
     }
 
     @Override

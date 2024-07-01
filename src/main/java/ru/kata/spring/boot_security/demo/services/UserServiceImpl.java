@@ -47,15 +47,6 @@ public class UserServiceImpl implements UserService{
     @Override
     @Transactional
     public void updateUser(User user) {
-        User userFromDB = userRepository.findById(user.getId()).orElseThrow(() ->
-                new UsernameNotFoundException("User not found"));
-
-        if (!userFromDB.getPassword().equals(user.getPassword())) {
-            user.setPassword(encoder.encode(user.getPassword()));
-        } else {
-            user.setPassword(userFromDB.getPassword());
-        }
-        user.setRoles(userFromDB.getRoles());
         userRepository.save(user);
     }
 

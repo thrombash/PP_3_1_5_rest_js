@@ -56,12 +56,13 @@
                             </button>
                         </div>
                     </nav>
+
                     <div class="tab-content" id="nav-tabContent">
                         <div class="tab-pane fade show active" id="nav-users_table" role="tabpanel"
                              aria-labelledby="nav-users_table-tab">
 
                             <h5><b>All users</b></h5>
-                            <table class="table table-striped bg-white border table-responsive table-hover">
+                            <table class="table table-striped">
                                 <thead>
                                 <tr>
                                     <th>ID</th>
@@ -73,7 +74,6 @@
                                     <th>Delete</th>
                                 </tr>
                                 </thead>
-
                                 <tbody>
                                 <tr th:each="user: ${users}">
                                     <td th:text="${user.id}"/>
@@ -299,7 +299,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="v-pills-user" role="tabpanel" aria-labelledby="v-pills-user-tab">
+
+                <div class="tab-pane fade" id="v-pills-user" role="tabpanel"
+                     aria-labelledby="v-pills-user-tab">
                     <h2>User information-page</h2>
 
                     <h5><b>About user</b></h5>
