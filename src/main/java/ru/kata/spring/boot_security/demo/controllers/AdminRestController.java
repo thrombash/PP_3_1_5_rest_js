@@ -1,5 +1,6 @@
 package ru.kata.spring.boot_security.demo.controllers;
 
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,19 +35,20 @@ public class AdminRestController {
     @GetMapping("/{id}")
     public ResponseEntity<User> getUserById(@PathVariable("id") Long id) {
         User user = userService.getUser(id);
+        Hibernate.initialize(user.getRoles());
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity<HttpStatus> addNewUser(User newUser) {
-        userService.addUser(newUser);
-        return ResponseEntity.ok(HttpStatus.CREATED);
+    public ResponseEntity<User> addNewUser(@RequestBody User user) {
+        User savedUser = userService.addUser(user);
+        return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
     }
 
     @PutMapping
-    public ResponseEntity<HttpStatus> updateUser(User userFromWebPage) {
-        userService.updateUser(userFromWebPage);
-        return ResponseEntity.ok(HttpStatus.OK);
+    public ResponseEntity<User> updateUser(@RequestBody User user) {
+        User updatedUser = userService.updateUser(user);
+        return new ResponseEntity<>(updatedUser, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")

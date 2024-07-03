@@ -73,6 +73,7 @@
                                     <th>Username</th>
                                     <th>Password</th>
                                     <th>Firstname</th>
+                                    <th>Lastname</th>
                                     <th>Role</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
@@ -100,6 +101,9 @@
                                     <input type="text" class="form-control" id="firstname" name="firstname"
                                            placeholder="Firstname">
 
+                                    <label for="lastname" class="form-label">Lastname</label>
+                                    <input type="text" class="form-control" id="lastname" name="lastname"
+                                           placeholder="Lastname">
 
                                     <label for="roles" class="form-label">Role</label>
                                     <select class="form-select" multiple name="roles" id="roles" size="2">
@@ -132,24 +136,18 @@
                             <th scope="col">Username</th>
                             <th scope="col">Password</th>
                             <th scope="col">Firstname</th>
+                            <th scope="col">Lastname</th>
                             <th scope="col">Role</th>
                         </tr>
                         </thead>
                         <tbody id="oneUserBody">
-
                         </tbody>
                     </table>
                 </div>
-
             </div>
-
-
         </div>
-
-
     </div>
 </div>
-
 <div class="modal fade" id="deleteModal" tabindex="-1"
      aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -174,6 +172,9 @@
                         <br>
                         <label for="firstnameDel"><b>Firstname</b></label>
                         <input class="form-control" id="firstnameDel" disabled/>
+                        <br>
+                        <label for="lastnameDel"><b>Lastname</b></label>
+                        <input class="form-control" id="lastnameDel" disabled/>
                         <br>
                         <label for="roles" class="form-label">Role</label>
                         <select class="form-select" name="rolesDel"
@@ -222,11 +223,14 @@
                         <label for="firstnameRed"><b>Firstname</b></label>
                         <input class="form-control" id="firstnameRed" name="firstname"/>
                         <br>
+                        <label for="lastnameRed"><b>Lastname</b></label>
+                        <input class="form-control" id="lastnameRed" name="lastname"/>
+                        <br>
                         <label for="rolesRed" class="form-label">Role</label>
                         <select class="form-select" multiple name="roles"
                                 id="rolesRed" size="2" required>
-                            <option id="rolesRed1" value="1">ADMIN</option>
-                            <option id="rolesRed2" value="2">USER</option>
+                            <option id="rolesRed1" value="1">USER</option>
+                            <option id="rolesRed2" value="2">ADMIN</option>
                         </select>
                         <br><br>
                     </div>

@@ -18,7 +18,8 @@ function showOneUser(user) {
     temp += "<td>" + user.id + "</td>"
     temp += "<td>" + user.username + "</td>"
     temp += "<td>" + user.password + "</td>" // Добавлено отображение пароля
-    temp += "<td>" + user.age + "</td>"
+    temp += "<td>" + user.firstname + "</td>"
+    temp += "<td>" + user.lastname + "</td>"
     temp += "<td>" + user.roles.map(role => role.name).join(" ") + "</td>"
     temp += "</tr>"
     document.getElementById("oneUserBody").innerHTML = temp;

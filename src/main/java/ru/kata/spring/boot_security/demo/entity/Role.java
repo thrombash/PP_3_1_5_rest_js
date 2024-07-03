@@ -1,5 +1,7 @@
 package ru.kata.spring.boot_security.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.lang.NonNull;
 import org.springframework.security.core.GrantedAuthority;
 import ru.kata.spring.boot_security.demo.security.GrantedAuthorityImpl;
@@ -10,6 +12,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "roles")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
