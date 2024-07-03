@@ -1,8 +1,7 @@
-package ru.kata.spring.boot_security.demo.injectedUsers;
+package ru.kata.spring.boot_security.demo.init;
 
 import org.hibernate.Hibernate;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 import ru.kata.spring.boot_security.demo.entity.Role;
 import ru.kata.spring.boot_security.demo.entity.User;
 import ru.kata.spring.boot_security.demo.services.RoleService;
